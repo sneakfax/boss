@@ -4,7 +4,7 @@
 SMS-спамер который спамит СМС-подтверждениями с разных сайтов.<br>
 Только для России!<br>
 
-![N|Solid](https://ibb.co/yXByRSY)
+![N|Solid](https://i.ibb.co/c1XFvLC/bosss4.jpg)
 
 
 
