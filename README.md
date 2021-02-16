@@ -20,9 +20,9 @@ SMS-спамер который спамит СМС-подтверждениям
 8. Возможность просто добавлять новые сервисы (в файле <code>servicesList.json</code>)
 
 # Как установить?
-    Просто следуйте одной из инструкций<br>
+   Просто следуйте одной из инструкций<br>
 ## Android:
-    Если у вас Android - скачать <a href="https://play.google.com/store/apps/details?id=com.termux&hl=ru">Termux из Google Play</a>, открыть его и прописать команды ниже:<br>
+   Если у вас Android - скачать <a href="https://play.google.com/store/apps/details?id=com.termux&hl=ru">Termux из Google Play</a>, открыть его и прописать команды ниже:<br>
     <code>apt update</code><br>
     <code>apt upgrade</code><br>
     <code>apt install git</code><br>
@@ -32,7 +32,7 @@ SMS-спамер который спамит СМС-подтверждениям
     <code>boss</code><br>
 
 ## iOS:
-    Если у вас iOS - скачать <a href="https://apps.apple.com/ru/app/testflight/id899247664">Testflight из App Store</a>, после чего присоедениться к тестированию <a href="https://testflight.apple.com/join/97i7KM8O">iSH в Testflight</a> и прописать команды ниже:<br>
+   Если у вас iOS - скачать <a href="https://apps.apple.com/ru/app/testflight/id899247664">Testflight из App Store</a>, после чего присоедениться к тестированию <a href="https://testflight.apple.com/join/97i7KM8O">iSH в Testflight</a> и прописать команды ниже:<br>
     <code>apk update</code><br>
     <code>apk upgrade</code><br>
     <code>apk add git python3 py3-pip python3-dev gcc musl-dev</code><br>
@@ -43,7 +43,7 @@ SMS-спамер который спамит СМС-подтверждениям
     <br>
 
 ## Windows:
-    С начала установите Windows WSL - как это делается можно посмотреть <a href="https://www.youtube.com/watch?v=HYuFw-YldjU">здесь</a>.
+   С начала установите Windows WSL - как это делается можно посмотреть <a href="https://www.youtube.com/watch?v=HYuFw-YldjU">здесь</a>.
     После установки Ubuntu WSL - запустите Ubuntu WSL и пробейте следуйщие комманды:<br>
     <code>sudo add-apt-repository universe</code><br>
     <code>sudo apt-get update</code><br>
@@ -54,10 +54,10 @@ SMS-спамер который спамит СМС-подтверждениям
     <code>boss</code><br>
 
 ## Linux:
-    Установка на Linux аналогична установке на Windows (только без устоновки Ubuntu WSL), нужно лишь вбить команды в терминале.<br>
+   Установка на Linux аналогична установке на Windows (только без устоновки Ubuntu WSL), нужно лишь вбить команды в терминале.<br>
 
 ## MacOS:
-    Сначала установите brew если он у вас еще не установлен. Откройте терминал и вбейте:<br>
+   Сначала установите brew если он у вас еще не установлен. Откройте терминал и вбейте:<br>
     <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>
     После этого пропишите в терминале следуйщие комманды:<br>
     <code>brew upgrade --cask</code><br>
@@ -72,5 +72,5 @@ SMS-спамер который спамит СМС-подтверждениям
 
 
 # LICENSE
-    **Лицензия: MPL-2.0**<br>
-    Глаголит она о том, что если у вас будут хоть какие то проблемы с законом, то <b>эти проблемы остаются вашими</b>, ибо я всего лишь программист, а вы использовали мою программу в своих корыстных целях!
+   **Лицензия: MPL-2.0**<br>
+   Глаголит она о том, что если у вас будут хоть какие то проблемы с законом, то <b>эти проблемы остаются вашими</b>, ибо я всего лишь программист, а вы использовали мою программу в своих корыстных целях!
