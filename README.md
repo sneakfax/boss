@@ -1,5 +1,4 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0) ![repo-size](https://img.shields.io/github/repo-size/sneakfax/boss)
-![logo](https://raw.githubusercontent.com/sneakfax/boss/master/logo.jpg)
 #
 SMS-спамер который спамит СМС-подтверждениями с разных сайтов.<br>
 Только для России!<br>
