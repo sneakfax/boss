@@ -25,6 +25,7 @@
     <code>apt update</code><br>
     <code>apt upgrade</code><br>
     <code>apt install git</code><br>
+     <code>apt install python</code><br>
     <code>git clone https://github.com/sneakfax/boss</code><br>
     <code>cd boss</code><br>
     <code>python3 setup_mobile.py install</code><br>
@@ -34,7 +35,7 @@
    Если у вас iOS - скачать <a href="https://apps.apple.com/ru/app/testflight/id899247664">Testflight из App Store</a>, после чего присоедениться к тестированию <a href="https://testflight.apple.com/join/97i7KM8O">iSH в Testflight</a> и прописать команды ниже:<br>
     <code>apk update</code><br>
     <code>apk upgrade</code><br>
-    <code>apk add git python3 py3-pip python3-dev gcc musl-dev</code><br>
+    <code>apk add git python3 py3-pip</code><br>
     <code>git clone https://github.com/sneakfax/boss</code><br>
     <code>cd boss</code><br>
     <code>python3 setup_mobile.py install</code><br>
