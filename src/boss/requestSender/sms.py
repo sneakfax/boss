@@ -44,14 +44,15 @@ class SmsSpammer:
         self.servicesURLs = json.loads(services)
         
     def sendSMS(self, websiteData, proxy ):
-        p = {'http': "http://{}".format(proxy), 'https':"http://{}".format(proxy)}
+        if proxy != None:
+            proxy = {'http': "http://{}".format(proxy), 'https':"http://{}".format(proxy)}
         try:
              if websiteData["kind"] == "data":
-                 requests.post(websiteData["url"], data=websiteData["data"], proxies=p, timeout=self.timeout)
+                 requests.post(websiteData["url"], data=websiteData["data"], proxies=proxy, timeout=self.timeout)
              elif websiteData["kind"] == "json":
-                 requests.post(websiteData["url"], json=websiteData["data"], proxies=p, timeout=self.timeout)
+                 requests.post(websiteData["url"], json=websiteData["data"], proxies=proxy, timeout=self.timeout)
              elif websiteData["kind"] == "params":
-                 requests.post(websiteData["url"], params=websiteData["data"], proxies=p, timeout=self.timeout)
+                 requests.post(websiteData["url"], params=websiteData["data"], proxies=proxy, timeout=self.timeout)
 
              return 1
         except Exception as e:
