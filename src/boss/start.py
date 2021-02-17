@@ -6,7 +6,6 @@ import threading
 from threading import Thread
 import subprocess
 # from boss.sms import SmsSpammer
-from boss.proxyManager import ProxyManager
 from boss.userInterface import UserInterface
 from colorama import Fore, Back, Style
 import os
@@ -177,13 +176,17 @@ def startApplication():
 #async version for pc:
 def asyncMain():
     global SmsSpammer
+    global ProxyManager
+    from boss.asyncRequestSender.proxyManager import ProxyManager
     from boss.asyncRequestSender.sms import SmsSpammer
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     startApplication()
 #mobile version:
 def main():
     global SmsSpammer
+    global ProxyManager
     from boss.requestSender.sms import SmsSpammer
+    from boss.requestSender.proxyManager import ProxyManager
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     startApplication()
 
