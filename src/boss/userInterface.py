@@ -39,15 +39,19 @@ class UserInterface:
     def clear(self):
             os.system('cls' if os.name=='nt' else 'clear')
 
-    def getUserIntegerInput(self, question):
+    def getUserIntegerInput(self, question, limit=0):
         print(question)
         try:
             iterationsNumber = input(Fore.BLUE+"spymer > "+Style.RESET_ALL)
             int(iterationsNumber)
-            return iterationsNumber
+            if limit != 0 and iterationsNumber > limit:
+                self.printError("Разрешены только цифры меньше "+str(limit))
+                self.getUserIntegerInput(question, limit)
+            else:
+                return iterationsNumber
         except:
             self.printError("Разрешены только цифры!")
-            self.getUserIntegerInput(question)
+            self.getUserIntegerInput(question, limit)
 
 
 

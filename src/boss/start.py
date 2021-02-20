@@ -39,13 +39,13 @@ def oneNumber():
     ui.clear()
     ui.logo()
     phone = ui.getUserIntegerInput('Введите телефон ("ctrl-Z" - выход):')
-    iterationsNumber = ui.getUserIntegerInput('Введите количество кругов ("ctrl-Z" - выход):')
+    iterationsNumber = ui.getUserIntegerInput('Введите количество кругов ("ctrl-Z" - выход):', limit=50)
     
     ui.clear()
     ui.logo()
     print('\nТелефон: {}\nКол-во кругов: {}'.format(phone,iterationsNumber)+'\nСпамер запущен.\nЕсли хотите остановить - нажмите Ctrl+Z.')
     doSpamming(phone, int(iterationsNumber))
-    return Fore.BLUE+"\nГотово.\nТелефон: {}\nКол-во кругов: {}".format(phone, iterationsNumber)+Style.RESET_ALL
+    return Fore.GREEN+"\nГотово.\nТелефон: {}\nКол-во кругов: {}".format(phone, iterationsNumber)+Style.RESET_ALL
 
 
 
@@ -90,7 +90,7 @@ def severalNumbers():
 
     ui.clear()
     ui.logo()
-    iterationsNumber = ui.getUserIntegerInput('Введите количество кругов ("ctrl-Z" - выход):')
+    iterationsNumber = ui.getUserIntegerInput('Введите количество кругов ("ctrl-Z" - выход):',limit=50)
 
     ui.clear()
     ui.logo()
@@ -104,7 +104,7 @@ def severalNumbers():
     #wait for all threads to finish:
     for x in thread_list:
         x.join()
-    return Fore.BLUE+"\nГотово.\nНомера:{}\nКол-во кругов: {}".format(phoneNumbers,iterationsNumber)+Style.RESET_ALL
+    return Fore.GREEN+"\nГотово.\nНомера:{}\nКол-во кругов: {}".format(phoneNumbers,iterationsNumber)+Style.RESET_ALL
 
 
 def doSpamming(phone, iterationsNumber):
@@ -114,6 +114,7 @@ def doSpamming(phone, iterationsNumber):
     while iteration < iterationsNumber:
         proxies = proxyManager.getProxies()
         spammer.setProxies(proxies)
+        print(Fore.LIGHTBLUE_EX+"Круг "+str(iteration)+" начат..."+Style.RESET_ALL)
         spammer.startSending()
         iteration+=1
         print(Fore.GREEN+"{}".format(phone)+Style.RESET_ALL+": круг №{} пройден.".format(iteration))
