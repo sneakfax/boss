@@ -126,6 +126,7 @@ def startApplication():
     global ui
     ui = UserInterface()
     proxyManager = ProxyManager()
+    proxyManager.autoChangeProxy = True
     
     result=""
     while True:
@@ -133,9 +134,18 @@ def startApplication():
         ui.logo()
         checkver()
         print(result)
-        print("Proxy: "+Fore.BLUE+"{}".format(proxyManager.proxyList)+Style.RESET_ALL)
-        if proxyManager.proxyList == []:
+
+        #------proxy-status------
+        if proxyManager.proxyList == [] and not proxyManager.autoChangeProxy:
             ui.printWarning("Советую использовать прокси !!!")
+            print("Proxy: "+Fore.BLUE+"no proxy"+Style.RESET_ALL)
+        else: 
+            if proxyManager.autoChangeProxy:
+                print("Proxy: "+Fore.BLUE+"auto-change"+Style.RESET_ALL)
+            else:
+                print("Proxy: "+Fore.BLUE+"{}".format(proxyManager.proxyList)+Style.RESET_ALL)
+        #------proxy-status------
+
 
         menuInput = ui.getUserChoice("Введите номер пункта: ", ["Запустить спамер","Настройки прокси","Обновить SPYMER","Выход"])
         if menuInput == 1:
@@ -144,22 +154,24 @@ def startApplication():
             menuInput = ui.getUserChoice("Выберите один вариант: ", ["Запустить спамер на один номер","Запустить спамер на несколько номеров"])
             if menuInput == 1:
                 result=oneNumber()
-                exit()
             elif menuInput == 2:
                 result=severalNumbers()
         elif menuInput == 2:
-            menuInput = ui.getUserChoice("spymer >  ", ["Удалить прокси","Ввести свой прокси","Сгенерировать прокси","Включить автоматическую генерацию прокси после каждого круга"])
+            autoChangeStatus = "Отключить"
+            if not proxyManager.autoChangeProxy:
+                autoChangeStatus = "Включить"
+            menuInput = ui.getUserChoice("spymer >  ", ["Удалить прокси","Ввести свой прокси","Сгенерировать прокси",autoChangeStatus+" автоматическую генерацию прокси после каждого круга"])
             ui.clear()
             ui.logo()
             if menuInput==1:
-                proxyManager.proxy = "localhost"
+                proxyManager.proxyList = []
+                proxyManager.autoChangeProxy = False
             elif menuInput==2:
                 proxyManager.updateproxy()
             elif menuInput==3:
                 proxyManager.generateproxy()
             elif menuInput==4:
-                proxyManager.autoChangeProxy = True
-                proxyManager.proxy="auto-change"
+                proxyManager.autoChangeProxy = not proxyManager.autoChangeProxy 
 
         elif menuInput == 3:
             ui.clear()

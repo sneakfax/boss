@@ -35,6 +35,30 @@ class SmsSpammer:
             self.name = self.name + random.choice(list('123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'))
             self.password = self.name + random.choice(list('123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'))
             self.email = "{}@gmail.com".format(self.name)
+        
+        headers = [
+                {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:76.0) Gecko/20100101 Firefox/76.0',
+                    'Accept': '*/*'
+                },
+                {
+                "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0",
+                'Accept': '*/*'
+                },
+                {
+                "User-Agent": "Mozilla/5.0 (X11; Debian; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0",
+                'Accept': '*/*'
+                },
+                {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 3.1; rv:76.0) Gecko/20100101 Firefox/69.0',
+                'Accept': '*/*'
+                },
+                {
+                "User-Agent": "Mozilla/5.0 (X11; Debian; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/76.0",
+                'Accept': '*/*'
+                },
+                ]
+        self.header = random.choice(headers)
 
         services = pkgutil.get_data('boss','data/servicesList.json').decode("utf-8")
         services = services.replace("$phone$",self.phoneNumber)
@@ -48,11 +72,11 @@ class SmsSpammer:
             proxy = {'http': "http://{}".format(proxy), 'https':"http://{}".format(proxy)}
         try:
              if websiteData["kind"] == "data":
-                 requests.post(websiteData["url"], data=websiteData["data"], proxies=proxy, timeout=self.timeout)
+                 requests.post(websiteData["url"], data=websiteData["data"], proxies=proxy, timeout=self.timeout, headers=self.header)
              elif websiteData["kind"] == "json":
-                 requests.post(websiteData["url"], json=websiteData["data"], proxies=proxy, timeout=self.timeout)
+                 requests.post(websiteData["url"], json=websiteData["data"], proxies=proxy, timeout=self.timeout, headers=self.header)
              elif websiteData["kind"] == "params":
-                 requests.post(websiteData["url"], params=websiteData["data"], proxies=proxy, timeout=self.timeout)
+                 requests.post(websiteData["url"], params=websiteData["data"], proxies=proxy, timeout=self.timeout, headers=self.header)
 
              return 1
         except Exception as e:
@@ -76,4 +100,3 @@ class SmsSpammer:
             if result == 1:
                 successes += 1
         print("Успешно отосланно: "+str(successes)+", не получилось отослать:"+str(failures))
-        exit()
